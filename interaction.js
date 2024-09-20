@@ -12,12 +12,12 @@ function DnD(canvas, interactor) {
 		const { x, y } = getMousePosition(canvas, event)
 		this.initX = x;
 		this.initY = y;
-		// interactor.onInteractionStart(this);
-		console.log(this);
+		interactor.onInteractionStart(this);
+		// console.log(this);
 	};
 
 	this.onMouseMove = event => {
-		// interactor.onInteractionUpdate(this);
+		interactor.onInteractionUpdate(this);
 		// console.log(event);
 	};
 
@@ -25,8 +25,8 @@ function DnD(canvas, interactor) {
 		const { x, y } = getMousePosition(canvas, event)
 		this.finalX = x;
 		this.finalY = y;
-		// interactor.onInteractionEnd(this);
-		console.log(this);
+		interactor.onInteractionEnd(this);
+		// console.log(this);
 	};
 
 	// Associer les fonctions précédentes aux évènements du canvas.
@@ -38,7 +38,7 @@ function DnD(canvas, interactor) {
 
 // Place le point de l'événement evt relativement à la position du canvas.
 function getMousePosition(canvas, evt) {
-	var rect = canvas.getBoundingClientRect();
+	const rect = canvas.getBoundingClientRect();
 	return {
 		x: evt.clientX - rect.left,
 		y: evt.clientY - rect.top
