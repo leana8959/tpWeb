@@ -25,5 +25,9 @@ function Shape(color, thickness) {
 }
 
 function Drawing() {
-	this.drawings = [];
+	this.forms = [];
+
+	this.getForms = () => {
+		return forms;
+	}
 }
