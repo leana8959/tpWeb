@@ -9,9 +9,10 @@ function DnD(canvas, interactor) {
 
 	// Developper les 3 fonctions gérant les événements
 	this.onMouseDown = function(event) {
-		this.initX = event.x;
-		this.initY = event.y;
-		// console.log(event);
+		const { x, y } = getMousePosition(canvas, event)
+		this.initX = x;
+		this.initY = y;
+		console.log(this);
 	}.bind(this);
 
 	this.onMouseMove = function(event) {
@@ -19,9 +20,10 @@ function DnD(canvas, interactor) {
 	}.bind(this);
 
 	this.onMouseUp = function(event) {
-		this.finalX = event.x;
-		this.finalY = event.y;
-		// console.log(event);
+		const { x, y } = getMousePosition(canvas, event)
+		this.finalX = x;
+		this.finalY = y;
+		console.log(this);
 	}.bind(this);
 
 	// Associer les fonctions précédentes aux évènements du canvas.
