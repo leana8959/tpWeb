@@ -10,6 +10,9 @@ function DnD(canvas, interactor) {
 
 	// Developper les 3 fonctions gérant les événements
 	this.onMouseDown = event => {
+		if (!isInCanvas(canvas, event))
+			return;
+
 		const { x, y } = getMousePosition(canvas, event)
 		this.initX = x;
 		this.initY = y;
@@ -20,6 +23,9 @@ function DnD(canvas, interactor) {
 	};
 
 	this.onMouseMove = event => {
+		if (!isInCanvas(canvas, event))
+			return;
+
 		if (event.buttons == 0)
 			return; // not being held, return
 
@@ -29,7 +35,10 @@ function DnD(canvas, interactor) {
 		interactor.onInteractionUpdate(this);
 	};
 
-	this.onMouseUp = _ => {
+	this.onMouseUp = event => {
+		if (!isInCanvas(canvas, event))
+			return
+
 		interactor.onInteractionEnd(this);
 	};
 
@@ -48,4 +57,12 @@ function getMousePosition(canvas, evt) {
 		y: evt.clientY - rect.top
 	};
 };
+
+function isInCanvas(canvas, event) {
+	const rect = canvas.getBoundingClientRect();
+	return (
+		(rect.left <= event.x && event.x <= rect.right)
+		&& (rect.top <= event.y && event.y <= rect.bottom)
+	);
+}
 
