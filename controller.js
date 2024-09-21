@@ -40,5 +40,15 @@ function Pencil(ctx, drawing, canvas) {
 		drawing.paint(ctx);
 		updateFormList(drawing.getForms());
 	};
+
+	this.onDeleteForm = id => {
+		drawing.updateForms(forms => {
+			forms.splice(id, 1)
+			updateFormList(forms);
+			return forms;
+		});
+
+		drawing.paint(ctx);
+	}
 };
 

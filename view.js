@@ -36,11 +36,11 @@ Drawing.prototype.paint = function(ctx) {
 };
 
 function updateFormList(forms) {
-	const last = forms[forms.length - 1]
-	document.getElementById("shapeList").insertAdjacentHTML("beforeend", `
-<button type="button" class="btn btn-default">
-	<span class="glyphicon glyphicon-remove-sign">${last.show()}</span>
-</button>
-`)
+	const htmlGen = forms.map((form, i) => {
+		return `<button type="button" class="btn btn-default" onclick="pencil.onDeleteForm(${i})">
+			<span class="glyphicon glyphicon-remove-sign">${form.show()}</span>
+		</button>`
+	}).reduce((a, b) => a + b, "")
 
+	document.getElementById("shapeList").innerHTML = htmlGen
 }

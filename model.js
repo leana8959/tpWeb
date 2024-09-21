@@ -31,6 +31,10 @@ function Drawing() {
 		return this.forms;
 	}
 
+	this.updateForms = updateFunc => {
+		this.forms = updateFunc(this.forms);
+	}
+
 	this.addForm = form => {
 		return this.forms.push(form)
 	}
