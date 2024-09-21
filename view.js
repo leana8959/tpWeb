@@ -9,7 +9,7 @@ Rectangle.prototype.paint = function(ctx) {
 	setStyle(this, ctx);
 	ctx.stroke;
 	ctx.beginPath();
-	ctx.rect(this.originX, this.originY, this.originX + this.width, this.originY + this.height);
+	ctx.rect(this.originX, this.originY, this.width, this.height);
 	ctx.stroke();
 };
 

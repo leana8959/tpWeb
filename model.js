@@ -13,7 +13,7 @@ function Line(color, thickness, startX, startY, endX, endY) {
 	this.endX = endX;
 	this.endY = endY;
 }
-Line.prototype = Shape;
+Line.prototype = new Shape();
 
 function Rectangle(color, thickness, originX, originY, width, height) {
 	Shape.call(this, color, thickness);

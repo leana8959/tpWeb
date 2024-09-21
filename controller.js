@@ -7,6 +7,10 @@ function Pencil(ctx, drawing, canvas) {
 	this.currentShape = 0;
 
 	// Liez ici les widgets à la classe pour modifier les attributs présents ci-dessus.
+	document.getElementById("butRect").onclick = _ => this.currEditingMode = editingMode.rect;
+	document.getElementById("butLine").onclick = _ => this.currEditingMode = editingMode.line;
+	document.getElementById("spinnerWidth").onchange = e => this.currLineWidth = e.target.value;
+	document.getElementById("colour").onchange = e => this.currColour = e.target.value;
 
 	new DnD(canvas, this); // This is passed to DnD. DnD calls these methods, which are callbacks
 
