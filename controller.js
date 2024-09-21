@@ -38,6 +38,7 @@ function Pencil(ctx, drawing, canvas) {
 	this.onInteractionEnd = _ => {
 		drawing.addForm(this.currentShape);
 		drawing.paint(ctx);
+		updateFormList(drawing.getForms());
 	};
 };
 

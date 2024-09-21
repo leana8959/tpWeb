@@ -29,3 +29,11 @@ Drawing.prototype.paint = function(ctx) {
 	});
 };
 
+function updateFormList(forms) {
+	document.getElementById("shapeList").insertAdjacentHTML("beforeend", `
+<button type="button" class="btn btn-default">
+	<span class="glyphicon glyphicon-remove-sign"></span>
+</button>
+`)
+
+}
