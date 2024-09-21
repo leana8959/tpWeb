@@ -11,14 +11,7 @@ function Pencil(ctx, drawing, canvas) {
 	new DnD(canvas, this); // This is passed to DnD. DnD calls these methods, which are callbacks
 
 	this.onInteractionStart = dnd => {
-	}
-
-	this.onInteractionUpdate = dnd => {
-	}
-
-	this.onInteractionEnd = dnd => {
 		const { initX, initY, finalX, finalY } = dnd;
-
 		switch (this.currEditingMode) {
 			case editingMode.line:
 				this.currentShape = new Line(this.currColour, this.currLineWidth,
@@ -32,8 +25,15 @@ function Pencil(ctx, drawing, canvas) {
 				break;
 		}
 
+		drawing.paint(ctx);
+		this.currentShape.paint(ctx);
+	};
+
+	this.onInteractionUpdate = this.onInteractionStart;
+
+	this.onInteractionEnd = _ => {
 		drawing.addForm(this.currentShape);
 		drawing.paint(ctx);
-	}
+	};
 };
 
